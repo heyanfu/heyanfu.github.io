@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="第一篇,博客," />
+  <meta name="keywords" content="lnmp,环境," />
 
 
 
@@ -79,18 +79,23 @@
 
 
 
-<meta name="description" content="其实很久之前就想自己搞个博客的了，当初自己也写了一个博客，后端实现了基本的一些功能，但前端很丑，也一直没去用与改进了。然后这段时间又是校招季，一直忙于这三条路线:网申 -&amp;gt; 笔试 -&amp;gt; 面试宣讲会 -&amp;gt; 笔试 -&amp;gt; 面试招聘会 -&amp;gt; 投递简历 -&amp;gt; 面试不知怎么时候早已冲刷掉忘记自己写博客的想法，前几天同学说他搭建了一个博客，让我去访问看看，我一看就感觉这就是我">
-<meta name="keywords" content="第一篇,博客">
+<meta name="description" content="前言虽然以前安装过lamp环境，但那时也只是按网上教程搭的，早已忘记。因此现在再搭建一次环境，一是为了更加熟悉，二是为以后复习做准备。 注本次环境是安装在虚拟机上的ubuntu系统 安装ubuntu推荐国内网易镜像地址下载，下载好之后直接在新建虚拟机按步骤安装即可。 nginx安装nginx本次软件安装均在root用户下进行  通过指令apt-get install nginx 即可安装nginx">
+<meta name="keywords" content="lnmp,环境">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第0篇博客">
-<meta property="og:url" content="http://yoursite.com/2017/10/26/第0篇博客/index.html">
+<meta property="og:title" content="ubuntu下lnmp环境搭建(图文)">
+<meta property="og:url" content="http://yoursite.com/2018/03/10/ubuntu下lnmp环境搭建-图文/index.html">
 <meta property="og:site_name" content="这是。。">
-<meta property="og:description" content="其实很久之前就想自己搞个博客的了，当初自己也写了一个博客，后端实现了基本的一些功能，但前端很丑，也一直没去用与改进了。然后这段时间又是校招季，一直忙于这三条路线:网申 -&amp;gt; 笔试 -&amp;gt; 面试宣讲会 -&amp;gt; 笔试 -&amp;gt; 面试招聘会 -&amp;gt; 投递简历 -&amp;gt; 面试不知怎么时候早已冲刷掉忘记自己写博客的想法，前几天同学说他搭建了一个博客，让我去访问看看，我一看就感觉这就是我">
+<meta property="og:description" content="前言虽然以前安装过lamp环境，但那时也只是按网上教程搭的，早已忘记。因此现在再搭建一次环境，一是为了更加熟悉，二是为以后复习做准备。 注本次环境是安装在虚拟机上的ubuntu系统 安装ubuntu推荐国内网易镜像地址下载，下载好之后直接在新建虚拟机按步骤安装即可。 nginx安装nginx本次软件安装均在root用户下进行  通过指令apt-get install nginx 即可安装nginx">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-01T08:08:19.314Z">
+<meta property="og:image" content="http://yoursite.com/2018/03/10/ubuntu下lnmp环境搭建-图文/nginx_install.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/10/ubuntu下lnmp环境搭建-图文/nginx_change.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/10/ubuntu下lnmp环境搭建-图文/mysql_install.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/10/ubuntu下lnmp环境搭建-图文/php-fpm_install.png">
+<meta property="og:updated_time" content="2018-03-10T16:56:31.766Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="第0篇博客">
-<meta name="twitter:description" content="其实很久之前就想自己搞个博客的了，当初自己也写了一个博客，后端实现了基本的一些功能，但前端很丑，也一直没去用与改进了。然后这段时间又是校招季，一直忙于这三条路线:网申 -&amp;gt; 笔试 -&amp;gt; 面试宣讲会 -&amp;gt; 笔试 -&amp;gt; 面试招聘会 -&amp;gt; 投递简历 -&amp;gt; 面试不知怎么时候早已冲刷掉忘记自己写博客的想法，前几天同学说他搭建了一个博客，让我去访问看看，我一看就感觉这就是我">
+<meta name="twitter:title" content="ubuntu下lnmp环境搭建(图文)">
+<meta name="twitter:description" content="前言虽然以前安装过lamp环境，但那时也只是按网上教程搭的，早已忘记。因此现在再搭建一次环境，一是为了更加熟悉，二是为以后复习做准备。 注本次环境是安装在虚拟机上的ubuntu系统 安装ubuntu推荐国内网易镜像地址下载，下载好之后直接在新建虚拟机按步骤安装即可。 nginx安装nginx本次软件安装均在root用户下进行  通过指令apt-get install nginx 即可安装nginx">
+<meta name="twitter:image" content="http://yoursite.com/2018/03/10/ubuntu下lnmp环境搭建-图文/nginx_install.png">
 
 
 
@@ -120,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/10/26/第0篇博客/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/10/ubuntu下lnmp环境搭建-图文/"/>
 
 
 
 
 
-  <title>第0篇博客 | 这是。。</title>
+  <title>ubuntu下lnmp环境搭建(图文) | 这是。。</title>
   
 
 
@@ -263,7 +268,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/26/第0篇博客/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/10/ubuntu下lnmp环境搭建-图文/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="你的名字">
@@ -280,7 +285,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">第0篇博客</h1>
+          <h1 class="post-title" itemprop="name headline">ubuntu下lnmp环境搭建(图文)</h1>
         
 
         <div class="post-meta">
@@ -292,8 +297,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-26T12:44:52+08:00">
-                2017-10-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-10T23:18:11+08:00">
+                2018-03-10
               </time>
             
 
@@ -315,8 +320,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
+                  <a href="/categories/记录/" itemprop="url" rel="index">
+                    <span itemprop="name">记录</span>
                   </a>
                 </span>
 
@@ -334,8 +339,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2017/10/26/第0篇博客/#SOHUCS" itemprop="discussionUrl">
-                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2017/10/26/第0篇博客/" itemprop="commentsCount"></span>
+                <a href="/2018/03/10/ubuntu下lnmp环境搭建-图文/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2018/03/10/ubuntu下lnmp环境搭建-图文/" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -343,7 +348,7 @@
 
           
           
-             <span id="/2017/10/26/第0篇博客/" class="leancloud_visitors" data-flag-title="第0篇博客">
+             <span id="/2018/03/10/ubuntu下lnmp环境搭建-图文/" class="leancloud_visitors" data-flag-title="ubuntu下lnmp环境搭建(图文)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -374,9 +379,36 @@
       
 
       
-        <p>其实很久之前就想自己搞个博客的了，当初自己也写了一个博客，后端实现了基本的一些功能，但前端很丑，也一直没去用与改进了。然后这段时间又是校招季，一直忙于这三条路线:<br>网申 -&gt; 笔试 -&gt; 面试<br>宣讲会 -&gt; 笔试 -&gt; 面试<br>招聘会 -&gt; 投递简历 -&gt; 面试<br>不知怎么时候早已冲刷掉忘记自己写博客的想法，前几天同学说他搭建了一个博客，让我去访问看看，我一看就感觉这就是我心中理想的博客平台，后面询问得知这个博客使用 github + pages 搭建的，于是我这两天花了些空闲时间也根据网上的一些教程搭建了一个，基本的使用是没什么问题的了。</p>
-<p>以前也用word，记事本做过一些学习上的笔记，这段时间也会陆续放到博客上面去。<br>由于热爱编写博客的 码农/程序猿/程序员 众多，所以某些博文内容有类似之处在所难免，如有特别引用会在博文下方参考资料标注。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">echo</span> <span class="string">"hello blog"</span>;</div></pre></td></tr></table></figure>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>虽然以前安装过lamp环境，但那时也只是按网上教程搭的，早已忘记。因此现在再搭建一次环境，一是为了更加熟悉，二是为以后复习做准备。</p>
+<h1 id="注"><a href="#注" class="headerlink" title="注"></a>注</h1><p>本次环境是安装在虚拟机上的ubuntu系统</p>
+<h1 id="安装ubuntu"><a href="#安装ubuntu" class="headerlink" title="安装ubuntu"></a>安装ubuntu</h1><p>推荐国内<a href="http://mirrors.163.com/ubuntu-releases/" target="_blank" rel="external">网易镜像地址</a>下载，下载好之后直接在新建虚拟机按步骤安装即可。</p>
+<h1 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h1><h2 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h2><p>本次软件安装均在root用户下进行</p>
+<ul>
+<li>通过指令<code>apt-get install nginx</code> 即可安装nginx服务器。</li>
+<li>安装了 nginx 后，通过 ifconfig 查看 inet addr。</li>
+<li>然后在主机电脑游览器上直接访问这个 ip 地址，如果出现了nginx欢迎界面，则说明nginx安装成功。<h2 id="配置nginx"><a href="#配置nginx" class="headerlink" title="配置nginx"></a>配置nginx</h2></li>
+<li>编辑 <code>/etc/nginx/sites-available/default</code>，在root配置项下面的index中加入index.php。</li>
+<li>编辑 <code>/etc/nginx/sites-available/default</code>，取消下面对php模块解析的注释。</li>
+</ul>
+<p><img src="/2018/03/10/ubuntu下lnmp环境搭建-图文/nginx_install.png" alt="nginx安装图"></p>
+<p><img src="/2018/03/10/ubuntu下lnmp环境搭建-图文/nginx_change.png" alt="nginx配置图"></p>
+<h1 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h1><ul>
+<li>通过命令 ``apt-get install nginx``` 即可安装，安装过程中会跳出窗口叫你输入mysql用户密码，输入密码即可。</li>
+<li>通过命令 <code>mysql -uroot -p</code> 看能否成功进入mysql，能的话则表明mysql安装成功。</li>
+</ul>
+<p><img src="/2018/03/10/ubuntu下lnmp环境搭建-图文/mysql_install.png" alt="mysql安装图"></p>
+<h1 id="php-fpm"><a href="#php-fpm" class="headerlink" title="php-fpm"></a>php-fpm</h1><ul>
+<li>通过 <code>apt-cache search php-fpm</code> 查看当前可安装的php-fpm相关软件包。</li>
+<li>通过 <code>apt-get install php7.0-fpm</code> 安装(此处的php7.0-fpm为上一条指令列出的相关软件包)</li>
+<li>配置 <code>/etc/php/7.0/fpm/php.ini</code>，<br><code>cgi.fix_pathinfo=1</code> =&gt;  <code>cgi.fix_pathinfo=0</code>(原因见<a href="http://www.laruence.com/2010/05/20/1495.html" target="_blank" rel="external">鸟哥博客</a>)</li>
+<li>以上安装好后可重新加载下nginx和php-fpm配置，通过 <code>service nginx restart</code>， <code>service php-fpm restart</code>。</li>
+</ul>
+<p><img src="/2018/03/10/ubuntu下lnmp环境搭建-图文/php-fpm_install.png" alt="php-fpm安装图"></p>
+<h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><ul>
+<li>可以通过 <code>nginx -t</code> 测试nginx的配置文件是否正常。</li>
+<li>编写了一个连接数据库的脚本，用pdo输出表数据时报错 could not find driver，后查明原因是未安装php_mysql扩展(通过phpinfo()输出的扩展中没有php_mysql)，直接通过 <code>apt-get install php7.0-mysql</code>即可，注意要开启(把前面的分号去掉) <code>/etc/php/7.0/fpm/php.ini</code>中的 <code>extension=php_pdo_mysql.dll</code>。访问成功，表数据正常输出。<h1 id="其它问题"><a href="#其它问题" class="headerlink" title="其它问题"></a>其它问题</h1><h2 id="ubuntu系统vi编辑文件时不能删除"><a href="#ubuntu系统vi编辑文件时不能删除" class="headerlink" title="ubuntu系统vi编辑文件时不能删除"></a>ubuntu系统vi编辑文件时不能删除</h2>我通过<a href="http://www.jb51.net/article/114998.htm" target="_blank" rel="external">该篇文章</a>中方法一已解决。</li>
+</ul>
+<h1 id="参考博文-https-www-jianshu-com-p-010946a7201d"><a href="#参考博文-https-www-jianshu-com-p-010946a7201d" class="headerlink" title="参考博文: https://www.jianshu.com/p/010946a7201d"></a>参考博文: <a href="https://www.jianshu.com/p/010946a7201d" target="_blank" rel="external">https://www.jianshu.com/p/010946a7201d</a></h1>
       
     </div>
     
@@ -422,7 +454,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/第一篇-博客/" rel="tag"># 第一篇,博客</a>
+            <a href="/tags/lnmp/" rel="tag"># lnmp</a>
+          
+            <a href="/tags/环境/" rel="tag"># 环境</a>
           
         </div>
       
@@ -435,15 +469,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/03/10/ubuntu下lnmp环境搭建/" rel="next" title="ubuntu下lnmp环境搭建(图文)">
+                <i class="fa fa-chevron-left"></i> ubuntu下lnmp环境搭建(图文)
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/26/校招总结/" rel="prev" title="校招总结">
-                校招总结 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -520,8 +554,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -615,6 +658,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注"><span class="nav-number">2.</span> <span class="nav-text">注</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装ubuntu"><span class="nav-number">3.</span> <span class="nav-text">安装ubuntu</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#nginx"><span class="nav-number">4.</span> <span class="nav-text">nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装nginx"><span class="nav-number">4.1.</span> <span class="nav-text">安装nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置nginx"><span class="nav-number">4.2.</span> <span class="nav-text">配置nginx</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mysql"><span class="nav-number">5.</span> <span class="nav-text">mysql</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#php-fpm"><span class="nav-number">6.</span> <span class="nav-text">php-fpm</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#测试"><span class="nav-number">7.</span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其它问题"><span class="nav-number">8.</span> <span class="nav-text">其它问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ubuntu系统vi编辑文件时不能删除"><span class="nav-number">8.1.</span> <span class="nav-text">ubuntu系统vi编辑文件时不能删除</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考博文-https-www-jianshu-com-p-010946a7201d"><span class="nav-number">9.</span> <span class="nav-text">参考博文: https://www.jianshu.com/p/010946a7201d</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
