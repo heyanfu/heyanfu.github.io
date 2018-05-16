@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="这是。。">
 <meta property="og:description" content="前言日常使用电脑、开发过程中难免会遇到一些奇葩问题，这些问题一般解决方案都很简单，但是寻找解决过程可能比较艰难，因为没有一些相关的专业知识就很难知道是哪里引起的问题，最近实习就遇到了一些奇葩问题，折腾挺久才发现问题根源所在，于是就问题及解决方案记录在此。 php线上项目本地运行报错坑：从本地搭建好WAMP环境，并且做了相关配置后，测试发现几处表单提交均报404错误，然而模板文件是存在的，而且路径也">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-16T12:32:11.889Z">
+<meta property="og:updated_time" content="2018-05-16T12:35:11.937Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="日常开发过程遇到的那些奇葩问题(全面)">
 <meta name="twitter:description" content="前言日常使用电脑、开发过程中难免会遇到一些奇葩问题，这些问题一般解决方案都很简单，但是寻找解决过程可能比较艰难，因为没有一些相关的专业知识就很难知道是哪里引起的问题，最近实习就遇到了一些奇葩问题，折腾挺久才发现问题根源所在，于是就问题及解决方案记录在此。 php线上项目本地运行报错坑：从本地搭建好WAMP环境，并且做了相关配置后，测试发现几处表单提交均报404错误，然而模板文件是存在的，而且路径也">
@@ -383,7 +383,7 @@
 <h2 id="大包更新失败"><a href="#大包更新失败" class="headerlink" title="大包更新失败"></a>大包更新失败</h2><p>坑：项目有个包(apk文件)更新操作，发现小包能正常更新，而大包不能正常更新。<br>解决：更新过程中有一步上传阿里云OSS操作，用到了curl发送请求，请求参数CURLOPT_TIMEOUT只设置了3秒，大包请求未完成就断开了，改成大值(3600/7200)即可。</p>
 <h2 id="大包更新失败-1"><a href="#大包更新失败-1" class="headerlink" title="大包更新失败"></a>大包更新失败</h2><p>坑：项目有个包(apk文件)更新操作，发现小包能正常更新，而大包不能正常更新。<br>解决：更新过程中有一步上传阿里云OSS操作，用到了curl发送请求，请求参数CURLOPT_TIMEOUT只设置了3秒，大包请求未完成就断开了，改成大值(3600/7200)即可。</p>
 <h2 id="eclipse运行web项目报错"><a href="#eclipse运行web项目报错" class="headerlink" title="eclipse运行web项目报错"></a>eclipse运行web项目报错</h2><p>坑：jdk10.<em>,tomcat9.</em>在eclipse中运行web项目报错<br>解决：报的错会弹窗（具体错误忘记了。。），把jdk10.*卸载，重装一个jdk1.9就好了</p>
-<h2 id="github-pages搭建的博客突然访问不了"><a href="#github-pages搭建的博客突然访问不了" class="headerlink" title="github pages搭建的博客突然访问不了"></a>github pages搭建的博客突然访问不了</h2><p>坑：一开始用github pages搭建好博客那端时间是可以正常访问的，后来自己电脑上突然访问不了博客了，手机端可以正常访问。<br>解决：adsafe的问题，关闭后正常访问（不过我正常访问后又开启了adsafe，博客还是可以正常访问，不知道adsafe什么情况。。）。</p>
+<h2 id="github-pages搭建的博客突然访问不了"><a href="#github-pages搭建的博客突然访问不了" class="headerlink" title="github pages搭建的博客突然访问不了"></a>github pages搭建的博客突然访问不了</h2><p>坑：一开始用github pages搭建好博客那端时间是可以正常访问的，后来自己电脑上突然访问不了博客了，手机端可以正常访问。<br>解决：adsafe的问题，关闭后正常访问。</p>
 
       
     </div>
