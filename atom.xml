@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://heyanfu.github.io/"/>
-  <updated>2018-12-02T11:27:28.312Z</updated>
+  <updated>2019-01-05T10:09:42.193Z</updated>
   <id>https://heyanfu.github.io/</id>
   
   <author>
@@ -17,60 +17,125 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>bbbbaaa</title>
-    <link href="https://heyanfu.github.io/2018/12/02/bbbbaaa/"/>
-    <id>https://heyanfu.github.io/2018/12/02/bbbbaaa/</id>
-    <published>2018-12-02T11:27:28.000Z</published>
-    <updated>2018-12-02T11:27:28.312Z</updated>
+    <title>对比PHP学习Java Web</title>
+    <link href="https://heyanfu.github.io/2018/05/15/%E5%AF%B9%E6%AF%94PHP%E5%AD%A6%E4%B9%A0Java-Web/"/>
+    <id>https://heyanfu.github.io/2018/05/15/对比PHP学习Java-Web/</id>
+    <published>2018-05-15T09:58:35.000Z</published>
+    <updated>2019-01-05T10:09:42.193Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>经历了差不多一年的跑宣讲会-&gt;笔试-&gt;面试，终于在4月份拿到了一个对自己来说还不错的offer，主要是工作城市是自己最想去的广州，之后向hr了解到offer的具体岗位为java后端开发工程师，由于我之前走的是php方向，为了之后去公司能够写得出基本的业务代码，Java Web的代码编写学习（基于业务代码的学习）之旅便开始了。</p><h1 id="基础部分"><a href="#基础部分" class="headerlink" title="基础部分"></a>基础部分</h1><h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>在语法方面，主要的区别在于java是强类型语言，而php是弱类型语言，这个不需要花费什么时间去学习，感觉比较重要的一点就是它们运算过程中的类型转换问题。举例如下：</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$a = <span class="string">'2ab5c'</span>; </span><br><span class="line">$b = <span class="string">'1ef'</span>;</span><br><span class="line">$res = $a + $b;</span><br></pre></td></tr></table></figure><p>对php而言，经过上述运算，<em>$res</em>的结果为<em>3</em>，因为在php加号左右的变量都会默认被强制转换数字类型，<em>$a</em>会转换成<em>2</em>，同理，<em>$b</em>会转换成<em>1</em>，所以<em>$res</em>的值为<em>2 + 1 = 3</em>。<br>对java而言，加号运算符是字符串连接符，因此<em>$res</em>的结果为<em>2ab5c1ef</em>。</p><h2 id="变量存储容器"><a href="#变量存储容器" class="headerlink" title="变量存储容器"></a>变量存储容器</h2><p>在变量存储容器方面，php基本都是用Array来存储的，而java只有List、Map、Set等结构，每种结构又有不同的具体用法，这三种结构在java中都是非常常见的，需要重点学习与了解。</p><h1 id="Java-Web入门"><a href="#Java-Web入门" class="headerlink" title="Java Web入门"></a>Java Web入门</h1><h2 id="JSP"><a href="#JSP" class="headerlink" title="JSP"></a>JSP</h2><p>JSP其实就是在html页面中嵌入java代码，这点与php是类似的，在进行php Web开发时如果不使用框架的话，也是把php代码直接嵌入到html页面中，理解起来非常容易。<br>JSP中最重要的应该是九大内置对象了，其实JSP九大内置对象对应了php的超全局变量，它们在Web开发中使用的非常频繁，而且使用它们不需要用户去声明、或者去new，直接在代码中用即可。举例如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获得url中id值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// java使用内置对象request</span></span><br><span class="line">id = request.getParameter(<span class="string">"id"</span>);</span><br><span class="line"><span class="comment">// php使用超全局变量$_GET / $_REQUEST</span></span><br><span class="line">$id = $_GET[<span class="string">'id'</span>] / $_REQUEST[<span class="string">'id'</span>];</span><br><span class="line"><span class="comment">// 获取key为name的cookie值</span></span><br><span class="line"><span class="comment">// java使用内置对象cookie</span></span><br><span class="line">name = cookie.getName(<span class="string">"name"</span>);</span><br><span class="line"><span class="comment">// php使用超全局变量$_COOKIE / $_REQUEST</span></span><br><span class="line">$name = $_GET[<span class="string">'name'</span>] / $_REQUEST[<span class="string">'name'</span>];</span><br></pre></td></tr></table></figure></p><p>从上述例子可以看出，在Web开发不使用框架时，java和php在获取用户输入参数、操作cookie、session等所编写的代码逻辑基本类似。</p><h1 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h1><p>Servlet是用来处理用户的请求的，每个JSP页面在进行跳转（如超链接、表单提交）时都需要去请求某一个Servlet，由Servlet来处理用户的请求，处理完用户请求之后再指定输出（重定向）某一个JSP页面，这点跟php是不一样的。在php web开发中，用户在进行页面跳转（如超链接、表单提交）操作时也是由php文件进行处理的。</p><p>在Servlet配置文件中，可以自己映射向用户显示的url与后端实际进行处理的路径的对应关系，java中有许多可以配置的项，这点与php是不同的，php一般就一个数据库的配置文件，再加上一个存储常量的配置文件，存储结构多为数组形式，而java是以xml文件格式进行配置存储的，像监听器、过滤器都需要在相应的xml文件中进行配置，这些一开始对于phper来说是不容易的，因为配置文件很容易写错，这样程序就跑步起来了。</p><h1 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h1><p>在进行java操作数据库时，项目需要导入一个jdbc驱动包，但其代码逻辑与php操作数据库时类似的，都是先编写好sql语句，然后执行sql语句得到结果集，或者是先预编译sql语句，再执行得到结果集。</p><h1 id="SSM"><a href="#SSM" class="headerlink" title="SSM"></a>SSM</h1><p>就Web开发所使用的框架而言，php与java所使用的框架区别是非常大的。php框架基本都是基于MVC模式的，html文件往View文件夹下放，数据库操作代码往Model里面放，控制器代码往Controller文件夹下面放。而java在使用框架时，首先需要导入相对应的框架包，一般是通过Maven / Gradle自动构建的，它们有点类似php中的Composer，都可以用来管理一些包/类之间的依赖关系的。</p><p>另一个很大的不同就是java中的注解了，java中每个类、每个方法都有可能需要写注解，注解可以理解成对代码的注释，不同写法的注解都是对应了不同的意思的。<br>最后说一下Mybatis，Mybatis是一个用来处理sql语句的框架，Mybatis学习起来不难，花点时间看看官方文档就差不多可以仿着写代码了，感觉一开始最难的还是整个项目的搭建（如 SSM框架集成、配置文件）。</p>]]></content>
     
     <summary type="html">
     
+      
+      
+        &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;经历了差不多一年的跑宣讲会-&amp;gt;笔试-&amp;gt;面试，终于在4月份拿到了一个对自己来说还不错的offer，主要是工作城市是自己最想去的广州
+      
+    
     </summary>
     
+    
+      <category term="Java" scheme="https://heyanfu.github.io/tags/Java/"/>
     
   </entry>
   
   <entry>
-    <title>新的测试</title>
-    <link href="https://heyanfu.github.io/2018/12/02/%E6%96%B0%E7%9A%84%E6%B5%8B%E8%AF%95/"/>
-    <id>https://heyanfu.github.io/2018/12/02/新的测试/</id>
-    <published>2018-12-02T07:09:28.000Z</published>
-    <updated>2018-12-02T10:02:29.561Z</updated>
+    <title>ubuntu下lnmp环境搭建</title>
+    <link href="https://heyanfu.github.io/2018/03/10/ubuntu%E4%B8%8Blnmp%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+    <id>https://heyanfu.github.io/2018/03/10/ubuntu下lnmp环境搭建/</id>
+    <published>2018-03-10T09:43:11.000Z</published>
+    <updated>2019-01-05T09:58:50.497Z</updated>
     
-    <content type="html"><![CDATA[<p>hfksajdhkjfh副书记克里夫；sfj’faffjdafa<br>j啊的说法就开始了；的风景撒hfksajdhkjfh副书记克里夫；sfj’faffjdafa<br>j啊的说法就开始了；的风<br>hfksajdhkjfh副书记克里夫；sfj’faffjdafa<br>j啊的说法就开始了；的风<br>hfksajdhkjfh副书记克里夫；sfj’faffjdafa<br>j啊的说法就开始了；的风<br>hfksajdhkjfh副书记克里夫；sfj’faffjdafa<br>j啊的说法就开始了；的风</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>虽然以前安装过lamp环境，但那时也只是按网上教程搭的，早已忘记。因此现在再搭建一次环境，一是为了更加熟悉，二是为以后复习做准备。</p><h1 id="注"><a href="#注" class="headerlink" title="注"></a>注</h1><p>本次环境是安装在虚拟机上的ubuntu系统</p><h1 id="安装ubuntu"><a href="#安装ubuntu" class="headerlink" title="安装ubuntu"></a>安装ubuntu</h1><p>推荐国内<a href="http://mirrors.163.com/ubuntu-releases/" target="_blank" rel="noopener">网易镜像地址</a>下载，下载好之后直接在新建虚拟机按步骤安装即可。</p><h1 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h1><h2 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h2><p>本次软件安装均在root用户下进行</p><p>通过指令apt-get install nginx 即可安装nginx服务器。<br>安装了 nginx 后，通过 ifconfig 查看 inet addr。<br>然后在主机电脑游览器上直接访问这个 ip 地址，如果出现了nginx欢迎界面，则说明nginx安装成功。</p><p><img src="/2018/03/10/ubuntu下lnmp环境搭建/nginx_install.png" alt="安装nginx图" title="安装nginx图"></p><h2 id="配置nginx"><a href="#配置nginx" class="headerlink" title="配置nginx"></a>配置nginx</h2><p>编辑 /etc/nginx/sites-available/default，在root配置项下面的index中加入index.php。<br>编辑 /etc/nginx/sites-available/default，取消下面对php模块解析的注释。</p><p><img src="/2018/03/10/ubuntu下lnmp环境搭建/nginx_change.png" alt="配置nginx图" title="配置nginx图"></p><h1 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h1><ul><li>通过命令 <code>apt-get install nginx`</code> 即可安装，安装过程中会跳出窗口叫你输入mysql用户密码，输入密码即可。</li><li>通过命令 mysql -uroot -p 看能否成功进入mysql，能的话则表明mysql安装成功。</li></ul><p><img src="/2018/03/10/ubuntu下lnmp环境搭建/mysql_install.png" alt="mysql安装图" title="mysql安装图"></p><h1 id="php-fpm"><a href="#php-fpm" class="headerlink" title="php-fpm"></a>php-fpm</h1><ul><li>通过 apt-cache search php-fpm 查看当前可安装的php-fpm相关软件包。</li><li>通过 apt-get install php7.0-fpm 安装(此处的php7.0-fpm为上一条指令列出的相关软件包)</li><li>配置 /etc/php/7.0/fpm/php.ini，</li><li>cgi.fix_pathinfo=1 =&gt; cgi.fix_pathinfo=0(原因见<a href="http://www.laruence.com/2010/05/20/1495.html" target="_blank" rel="noopener">鸟哥博客</a>)</li><li>以上安装好后可重新加载下nginx和php-fpm配置，通过 service nginx restart， service php-fpm restart。</li></ul><p><img src="/2018/03/10/ubuntu下lnmp环境搭建/php-fpm_install.png" alt="php-fpm安装图" title="php-fpm安装图"></p><h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><ul><li>可以通过 nginx -t 测试nginx的配置文件是否正常。</li><li>编写了一个连接数据库的脚本，用pdo输出表数据时报错 could not find driver，后查明原因是未安装php_mysql扩展(通过phpinfo()输出的扩展中没有php_mysql)，直接通过 apt-get install php7.0-mysql即可，注意要开启(把前面的分号去掉) /etc/php/7.0/fpm/php.ini中的 extension=php_pdo_mysql.dll。访问成功，表数据正常输出。</li></ul><h1 id="其它问题"><a href="#其它问题" class="headerlink" title="其它问题"></a>其它问题</h1><h2 id="ubuntu系统vi编辑文件时不能删除"><a href="#ubuntu系统vi编辑文件时不能删除" class="headerlink" title="ubuntu系统vi编辑文件时不能删除"></a>ubuntu系统vi编辑文件时不能删除</h2><p>我通过<a href="https://www.jb51.net/article/114998.htm" target="_blank" rel="noopener">该篇文章</a>中方法一已解决。</p><h1 id="参考博文"><a href="#参考博文" class="headerlink" title="参考博文"></a>参考博文</h1><p><a href="https://www.jianshu.com/p/010946a7201d" target="_blank" rel="noopener">https://www.jianshu.com/p/010946a7201d</a></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;hfksajdhkjfh副书记克里夫；sfj’faffjdafa&lt;br&gt;j啊的说法就开始了；的风景撒hfksajdhkjfh副书记克里夫；sfj’faffjdafa&lt;br&gt;j啊的说法就开始了；的风&lt;br&gt;hfksajdhkjfh副书记克里夫；sfj’faffjdafa&lt;br
+        &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;虽然以前安装过lamp环境，但那时也只是按网上教程搭的，早已忘记。因此现在再搭建一次环境，一是为了更加熟悉，二是为以后复习做准备。&lt;/p&gt;
+
       
     
     </summary>
     
+      <category term="PHP" scheme="https://heyanfu.github.io/categories/PHP/"/>
     
-      <category term="test" scheme="https://heyanfu.github.io/tags/test/"/>
+    
+      <category term="LNMP" scheme="https://heyanfu.github.io/tags/LNMP/"/>
     
   </entry>
   
   <entry>
-    <title>Hello World</title>
-    <link href="https://heyanfu.github.io/2018/12/02/hello-world/"/>
-    <id>https://heyanfu.github.io/2018/12/02/hello-world/</id>
-    <published>2018-12-02T06:28:12.319Z</published>
-    <updated>2018-12-02T06:28:12.319Z</updated>
+    <title>日常奇葩问题记录</title>
+    <link href="https://heyanfu.github.io/2017/12/23/%E6%97%A5%E5%B8%B8%E5%A5%87%E8%91%A9%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
+    <id>https://heyanfu.github.io/2017/12/23/日常奇葩问题记录/</id>
+    <published>2017-12-23T09:23:25.000Z</published>
+    <updated>2019-01-05T09:26:48.224Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>日常使用电脑、开发过程中难免会遇到一些奇葩问题，这些问题一般解决方案都很简单，但是寻找解决过程可能比较艰难，因为没有一些相关的专业知识就很难知道是哪里引起的问题，最近实习就遇到了一些奇葩问题，折腾挺久才发现问题根源所在，于是就问题及解决方案记录在此。</p><h1 id="php线上项目本地运行报错"><a href="#php线上项目本地运行报错" class="headerlink" title="php线上项目本地运行报错"></a>php线上项目本地运行报错</h1><p>坑：从本地搭建好WAMP环境，并且做了相关配置后，测试发现几处表单提交均报404错误，然而模板文件是存在的，而且路径也没问题。<br>解决：经过测试发现报错相关的代码都是进行了数据库操作，由于本地WAMP种mysql版本为5.6，而线上项目使用了数据库新版本的一些特性，因此数据库操作报错，返回了404。将本地WAMP中的mysql关闭，或者换一个端口，然后下载了10.*版本的MariaDB，使其连接3306端口(默认)后，项目运行正常。</p><h1 id="电脑开不了机，能进安全模式"><a href="#电脑开不了机，能进安全模式" class="headerlink" title="电脑开不了机，能进安全模式"></a>电脑开不了机，能进安全模式</h1><p>坑：前一天晚上下班电脑关机时提示自动更新，没管它直接走了，然后次工作日电脑开不了机，只能进安装模式。<br>解决：进安全模式卸载显卡驱动后，即可正常开机。</p><h1 id="电脑无线网卡驱动不能正常安装"><a href="#电脑无线网卡驱动不能正常安装" class="headerlink" title="电脑无线网卡驱动不能正常安装"></a>电脑无线网卡驱动不能正常安装</h1><p>坑：电脑插入无限网卡后，右下角出现USB接入图标，但并未正常安装，多次反复插入网卡依然如此。<br>解决：选中USB图标，右键强制退出，自动正常安装。</p><h1 id="git未成功提交config文件"><a href="#git未成功提交config文件" class="headerlink" title="git未成功提交config文件"></a>git未成功提交config文件</h1><p>坑：本地git push后，服务器git pull发现config文件并未更新。<br>解决：git可配置.gitignore文件来忽略某些文件的下载、提交。</p><h1 id="接入现在支付异步回调失败"><a href="#接入现在支付异步回调失败" class="headerlink" title="接入现在支付异步回调失败"></a>接入现在支付异步回调失败</h1><p>坑：按现在支付文档、SDK接入项目后，发现支付成功后异步回调会验签失败。<br>解决：经测试，回调时的生成签名没有过滤signType字段，而demo里验签回过滤signType，进一步生成前面，去除过滤signType字段即可。</p><h1 id="大包更新失败"><a href="#大包更新失败" class="headerlink" title="大包更新失败"></a>大包更新失败</h1><p>坑：项目有个包(apk文件)更新操作，发现小包能正常更新，而大包不能正常更新。<br>解决：更新过程中有一步上传阿里云OSS操作，用到了curl发送请求，请求参数CURLOPT_TIMEOUT只设置了3秒，大包请求未完成就断开了，改成大值(3600/7200)即可。</p><h1 id="eclipse运行web项目报错"><a href="#eclipse运行web项目报错" class="headerlink" title="eclipse运行web项目报错"></a>eclipse运行web项目报错</h1><p>坑：jdk10.,tomcat9.在eclipse中运行web项目报错<br>解决：报的错会弹窗（具体错误忘记了。。），把jdk10.*卸载，重装一个jdk1.9就好了</p><h1 id="github-pages搭建的博客突然访问不了"><a href="#github-pages搭建的博客突然访问不了" class="headerlink" title="github pages搭建的博客突然访问不了"></a>github pages搭建的博客突然访问不了</h1><p>坑：一开始用github pages搭建好博客那端时间是可以正常访问的，后来自己电脑上突然访问不了博客了，手机端可以正常访问。<br>解决：adsafe的问题，关闭后正常访问。</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+        &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;日常使用电脑、开发过程中难免会遇到一些奇葩问题，这些问题一般解决方案都很简单，但是寻找解决过程可能比较艰难，因为没有一些相关的专业知识就很难
       
     
     </summary>
     
+    
+      <category term="积累" scheme="https://heyanfu.github.io/tags/%E7%A7%AF%E7%B4%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>校招记录</title>
+    <link href="https://heyanfu.github.io/2017/10/26/%E6%A0%A1%E6%8B%9B%E8%AE%B0%E5%BD%95/"/>
+    <id>https://heyanfu.github.io/2017/10/26/校招记录/</id>
+    <published>2017-10-26T09:06:36.000Z</published>
+    <updated>2019-01-05T09:22:53.681Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="2018校招-php面试总结"><a href="#2018校招-php面试总结" class="headerlink" title="2018校招-php面试总结"></a>2018校招-php面试总结</h1><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在大三下学期时，由于不太关注招聘相关的信息，以至于错过了春招，经过了解，很多公司秋招是暑假就陆续开始的了，因此在8月初就开始准备复习一些基础知识，阅读一些相关的书籍，以此巩固基础，在之后的线上笔试中，侥幸通过了几个公司的笔试，在这把相关的一些面试过程记录下来。</p><h1 id="三七互娱-9-22"><a href="#三七互娱-9-22" class="headerlink" title="三七互娱 9.22"></a>三七互娱 9.22</h1><h1 id="京东-9-23"><a href="#京东-9-23" class="headerlink" title="京东 9.23"></a>京东 9.23</h1><h1 id="深信服-9-26"><a href="#深信服-9-26" class="headerlink" title="深信服 9.26"></a>深信服 9.26</h1><h1 id="迅雷-10-10"><a href="#迅雷-10-10" class="headerlink" title="迅雷 10.10"></a>迅雷 10.10</h1><h1 id="同花顺"><a href="#同花顺" class="headerlink" title="同花顺"></a>同花顺</h1><h1 id="土巴兔"><a href="#土巴兔" class="headerlink" title="土巴兔"></a>土巴兔</h1><h1 id="美柚"><a href="#美柚" class="headerlink" title="美柚"></a>美柚</h1><h1 id="富途"><a href="#富途" class="headerlink" title="富途"></a>富途</h1><h1 id="多益网络"><a href="#多益网络" class="headerlink" title="多益网络"></a>多益网络</h1><h1 id="百田"><a href="#百田" class="headerlink" title="百田"></a>百田</h1>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;2018校招-php面试总结&quot;&gt;&lt;a href=&quot;#2018校招-php面试总结&quot; class=&quot;headerlink&quot; title=&quot;2018校招-php面试总结&quot;&gt;&lt;/a&gt;2018校招-php面试总结&lt;/h1&gt;&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot;
+      
+    
+    </summary>
+    
+      <category term="面试" scheme="https://heyanfu.github.io/categories/%E9%9D%A2%E8%AF%95/"/>
+    
+    
+      <category term="校招" scheme="https://heyanfu.github.io/tags/%E6%A0%A1%E6%8B%9B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第0篇博客</title>
+    <link href="https://heyanfu.github.io/2017/10/26/%E7%AC%AC0%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
+    <id>https://heyanfu.github.io/2017/10/26/第0篇博客/</id>
+    <published>2017-10-26T08:56:37.000Z</published>
+    <updated>2019-01-05T09:04:59.456Z</updated>
+    
+    <content type="html"><![CDATA[<p>其实很久之前就想自己搞个博客的了，当初自己也写了一个博客，后端实现了基本的一些功能，但前端很丑，也一直没去用与改进了。然后这段时间又是校招季，一直忙于这三条路线:</p><ul><li>网申 -&gt; 笔试 -&gt; 面试</li><li>宣讲会 -&gt; 笔试 -&gt; 面试</li><li>招聘会 -&gt; 投递简历 -&gt; 面试</li></ul><p>不知怎么时候早已冲刷掉忘记自己写博客的想法，前几天同学说他搭建了一个博客，让我去访问看看，我一看就感觉这就是我心中理想的博客平台，后面询问得知这个博客使用 github + pages 搭建的，于是我这两天花了些空闲时间也根据网上的一些教程搭建了一个，基本的使用是没什么问题的了。</p><p>以前也用word，记事本做过一些学习上的笔记，这段时间也会陆续放到博客上面去。<br>由于热爱编写博客的 码农/程序猿/程序员 众多，所以某些博文内容有类似之处在所难免，如有特别引用会在博文下方参考资料标注。</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">"hello blog"</span>;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;其实很久之前就想自己搞个博客的了，当初自己也写了一个博客，后端实现了基本的一些功能，但前端很丑，也一直没去用与改进了。然后这段时间又是校招季，一直忙于这三条路线:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;网申 -&amp;gt; 笔试 -&amp;gt; 面试&lt;/li&gt;
+&lt;li&gt;宣讲会 -&amp;gt; 笔试
+      
+    
+    </summary>
+    
+    
+      <category term="随笔" scheme="https://heyanfu.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
