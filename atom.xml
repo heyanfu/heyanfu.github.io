@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://heyanfu.github.io/"/>
-  <updated>2019-01-05T10:09:42.193Z</updated>
+  <updated>2019-02-23T12:02:04.719Z</updated>
   <id>https://heyanfu.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>新的开始</title>
+    <link href="https://heyanfu.github.io/2018/09/22/%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B/"/>
+    <id>https://heyanfu.github.io/2018/09/22/新的开始/</id>
+    <published>2018-09-22T08:59:31.000Z</published>
+    <updated>2019-02-23T12:02:04.719Z</updated>
+    
+    <content type="html"><![CDATA[<p>随着时间的推移，我终于步入了社会，开始了人生中真正意义的第一份工作。到了公司之后才发现，岗位并不是我以为的java开发岗位，而是flash开发岗位，这对于我来说是有些失望的。</p><p>由于最开始跟hr了解到的岗位是java开发岗，那时在学校走的又不是java开发方向，于是在大学最后的3个月里，特意花时间去复习了java相关的基础知识，了解了主流的SSM框架，最后并没有从事java开发，难免会有些失落。</p><p>不过语言也只是一种工具罢了，各种语言都存在其独特的意义。作为一个码农，如果太过于关键语言本身的话，是很难成为一个程序员的，相信无论是学习java、php、javascript，还是即将学习的actionscript3，都会以后的职业生涯有所帮助。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;随着时间的推移，我终于步入了社会，开始了人生中真正意义的第一份工作。到了公司之后才发现，岗位并不是我以为的java开发岗位，而是flash开发岗位，这对于我来说是有些失望的。&lt;/p&gt;
+&lt;p&gt;由于最开始跟hr了解到的岗位是java开发岗，那时在学校走的又不是java开发方向，
+      
+    
+    </summary>
+    
+      <category term="随笔" scheme="https://heyanfu.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>对比PHP学习Java Web</title>
