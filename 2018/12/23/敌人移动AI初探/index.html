@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="AI,">
 
 
 
@@ -88,13 +88,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="My Blog">
-<meta property="og:url" content="https://heyanfu.github.io/archives/2019/12/index.html">
+<meta name="description" content="前言在公司做flash有一段时间了，在这几个月做的功能中，有几个存在敌人移动的小游戏，发现敌人移动AI是一个值得学习与研究的方向，于是把学习记录于此。 格子类型游戏简介常见的格子类型游戏，可以理解为就是指把50X50(宽*高)的面板分成25个格子，每个格子的宽高为10*10，一个敌人初始化在某一个格子中，之后移动都是从某一个格子移动到临近的格子，不存在移动半格的情况。一般游戏中还会存在障碍物，敌人">
+<meta name="keywords" content="AI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="敌人移动AI初探">
+<meta property="og:url" content="https://heyanfu.github.io/2018/12/23/敌人移动AI初探/index.html">
 <meta property="og:site_name" content="My Blog">
+<meta property="og:description" content="前言在公司做flash有一段时间了，在这几个月做的功能中，有几个存在敌人移动的小游戏，发现敌人移动AI是一个值得学习与研究的方向，于是把学习记录于此。 格子类型游戏简介常见的格子类型游戏，可以理解为就是指把50X50(宽*高)的面板分成25个格子，每个格子的宽高为10*10，一个敌人初始化在某一个格子中，之后移动都是从某一个格子移动到临近的格子，不存在移动半格的情况。一般游戏中还会存在障碍物，敌人">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-28T16:09:32.525Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="My Blog">
+<meta name="twitter:title" content="敌人移动AI初探">
+<meta name="twitter:description" content="前言在公司做flash有一段时间了，在这几个月做的功能中，有几个存在敌人移动的小游戏，发现敌人移动AI是一个值得学习与研究的方向，于是把学习记录于此。 格子类型游戏简介常见的格子类型游戏，可以理解为就是指把50X50(宽*高)的面板分成25个格子，每个格子的宽高为10*10，一个敌人初始化在某一个格子中，之后移动都是从某一个格子移动到临近的格子，不存在移动半格的情况。一般游戏中还会存在障碍物，敌人">
 
 
 
@@ -124,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="https://heyanfu.github.io/archives/2019/12/">
+  <link rel="canonical" href="https://heyanfu.github.io/2018/12/23/敌人移动AI初探/">
 
 
 
 
 
-  <title>Archive | My Blog</title>
+  <title>敌人移动AI初探 | My Blog</title>
   
 
 
@@ -149,7 +154,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <a href="https://github.com/heyanfu" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
@@ -290,72 +295,205 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        Um..! 8 posts in total. Keep on posting.
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://heyanfu.github.io/2018/12/23/敌人移动AI初探/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="遗忘的记忆">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/a.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/12/23/敌人移动AI初探/" itemprop="url">
-              
-                <span itemprop="name">敌人移动AI初探</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">敌人移动AI初探</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-12-23T20:23:21+08:00" content="2019-12-23">
-          12-23
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-23T20:23:21+08:00">
+                2018-12-23
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/ActionScript3/" itemprop="url" rel="index">
+                    <span itemprop="name">ActionScript3</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/12/23/敌人移动AI初探/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2018/12/23/敌人移动AI初探/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在公司做flash有一段时间了，在这几个月做的功能中，有几个存在敌人移动的小游戏，发现敌人移动AI是一个值得学习与研究的方向，于是把学习记录于此。</p>
+<h1 id="格子类型游戏"><a href="#格子类型游戏" class="headerlink" title="格子类型游戏"></a>格子类型游戏</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>常见的格子类型游戏，可以理解为就是指把50X50(宽*高)的面板分成25个格子，每个格子的宽高为10*10，一个敌人初始化在某一个格子中，之后移动都是从某一个格子移动到临近的格子，不存在移动半格的情况。一般游戏中还会存在障碍物，敌人与自己均不能移动到存在障碍物的格子当中。</p>
+<h2 id="创建地图-格子-结构"><a href="#创建地图-格子-结构" class="headerlink" title="创建地图(格子)结构"></a>创建地图(格子)结构</h2><p>由于地图结构是固定的格子，因此可以直接使用二维数组来进行存储。数组元素的值可以用来代表格子的不同状态，这里0代表空格子，1代表存在障碍物的格子。代码如下所示：</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 为了方便,以3 * 3 大小格子为例</span></span><br><span class="line"><span class="keyword">const</span> MAP:Array = [[<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">                 [<span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>],</span><br><span class="line">                 [<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>]];</span><br><span class="line"><span class="keyword">const</span> ROW:int = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">const</span> COLUMN:int = <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="判断临近格子是否可以移动"><a href="#判断临近格子是否可以移动" class="headerlink" title="判断临近格子是否可以移动"></a>判断临近格子是否可以移动</h2><p>临近格子一般为上下左右四个方向，向每个方向移动只需要判断格子是否可行即可。</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @params posX 格子竖直方向的位置下标</span></span><br><span class="line"><span class="comment"> * @params posY 格子水平方向的位置下标</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">canMove</span><span class="params">(posX:int, posY:int)</span>:Boolean </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> nextPos:Array = [[<span class="number">0</span>, <span class="number">1</span>], [<span class="number">0</span>, <span class="number">-1</span>], [<span class="number">1</span>, <span class="number">0</span>], [<span class="number">-1</span>, <span class="number">0</span>]]; <span class="comment">// 用于计算上下左右四个方向的下标</span></span><br><span class="line">	<span class="keyword">var</span> temp:Array;</span><br><span class="line">	<span class="keyword">var</span> len:int = nextPos.length;</span><br><span class="line">	<span class="keyword">var</span> nextPosX:int;</span><br><span class="line">	<span class="keyword">var</span> nextPosY:int</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i:int = <span class="number">0</span>; i &lt; len; i ++) &#123;</span><br><span class="line">		temp = nextPos[i];</span><br><span class="line">		nextPosX = posX + temp[<span class="number">0</span>];</span><br><span class="line">		nextPosY = posY + temp[<span class="number">1</span>];</span><br><span class="line">		<span class="keyword">if</span> (judgeGrid(nextPosX, nextPosY)) &#123;</span><br><span class="line">			<span class="comment">// 做敌人移动到下标为nextPosX, nextPosY格子的逻辑</span></span><br><span class="line"></span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断格子下标是否合法且为空格子</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">judgeGrid</span><span class="params">(posX:int, posY:int)</span>:Boolean </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (posX &lt; <span class="number">0</span> || posX &gt;= ROW || posX &lt; <span class="number">0</span> || posY &gt;= COLUMN) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> MAP[posX][posY] == <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述代码逻辑虽然是以计算上下左右四个方向为例的，但其实也同样适用于八个方向（加左上、左下、右上、右下四个方向)，只需要改变下nextPos数组的值即可。<strong>后续还是以四个方向为例</strong>。</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 用于计算临近8个方向,后续代码逻辑同上,无需变动</span></span><br><span class="line"><span class="keyword">var</span> nextPos:Array = [[<span class="number">0</span>, <span class="number">1</span>], [<span class="number">0</span>, <span class="number">-1</span>], [<span class="number">1</span>, <span class="number">0</span>], [<span class="number">-1</span>, <span class="number">0</span>], [<span class="number">1</span>, <span class="number">1</span>], [<span class="number">-1</span>, <span class="number">-1</span>], [<span class="number">1</span>, <span class="number">-1</span>], [<span class="number">-1</span>, <span class="number">1</span>]];</span><br></pre></td></tr></table></figure>
+<h2 id="移动方向选择-下个格子选取"><a href="#移动方向选择-下个格子选取" class="headerlink" title="移动方向选择(下个格子选取)"></a>移动方向选择(下个格子选取)</h2><h3 id="完全随机选择"><a href="#完全随机选择" class="headerlink" title="完全随机选择"></a>完全随机选择</h3><p>也就是说每次走完一个格子，都重新从上下左右四个格子中选取，但是由于选取的格子不一定是可移动的，因此当遇到不可移动的格子时，需选取下一个方向</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> nextPos:Array = [[<span class="number">0</span>, <span class="number">1</span>], [<span class="number">0</span>, <span class="number">-1</span>], [<span class="number">1</span>, <span class="number">0</span>], [<span class="number">-1</span>, <span class="number">0</span>]];</span><br><span class="line"><span class="keyword">var</span> len:int = nextPos.length;</span><br><span class="line"><span class="keyword">var</span> direct:int;</span><br><span class="line"><span class="keyword">var</span> temp:Array;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i:int = <span class="number">0</span>; i &lt; len; i ++) &#123;</span><br><span class="line">	direct = int (Math.random() * <span class="number">4</span>);</span><br><span class="line">	temp = nextPos[direct];</span><br><span class="line">	<span class="comment">// 用于判断下一个方向</span></span><br><span class="line">	direct ++; </span><br><span class="line">	direct %= len;</span><br><span class="line">	<span class="comment">// 可移动的话做移动逻辑,并退出循环,结束此次移动,否则判断下一个方向是否可移动</span></span><br><span class="line">	<span class="keyword">if</span> (judgeGrid(temp[<span class="number">0</span>], temp[<span class="number">1</span>])) &#123;</span><br><span class="line">			</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="最近移动的方向优先选择"><a href="#最近移动的方向优先选择" class="headerlink" title="最近移动的方向优先选择"></a>最近移动的方向优先选择</h3><p>只需要把最近的方向存起来优先判断即可。</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> nextPos:Array = [[<span class="number">0</span>, <span class="number">1</span>], [<span class="number">0</span>, <span class="number">-1</span>], [<span class="number">1</span>, <span class="number">0</span>], [<span class="number">-1</span>, <span class="number">0</span>]];</span><br><span class="line"><span class="keyword">var</span> len:int = nextPos.length;</span><br><span class="line"><span class="keyword">var</span> direct:int = curDirect; <span class="comment">// curDirect为存的最近移动方向</span></span><br><span class="line"><span class="keyword">var</span> temp:Array;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i:int = <span class="number">0</span>; i &lt; len; i ++) &#123;</span><br><span class="line">	temp = nextPos[direct];</span><br><span class="line">	direct = int (Math.random() * <span class="number">4</span>);</span><br><span class="line">	<span class="comment">// 用于判断下一个方向</span></span><br><span class="line">	direct ++; </span><br><span class="line">	direct %= len;</span><br><span class="line">	<span class="comment">// 可移动的话做移动逻辑,并退出循环,结束此次移动,否则判断下一个方向是否可移动</span></span><br><span class="line">	<span class="keyword">if</span> (judgeGrid(temp[<span class="number">0</span>], temp[<span class="number">1</span>])) &#123;</span><br><span class="line">		<span class="comment">// 在移动之前记得把移动方向更新</span></span><br><span class="line">		curDirect = direct;</span><br><span class="line">			</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
     </div>
+    
+    
+    
+    
+    
+
+    
+
+    
+
+    <div>
+      
+        ﻿<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/AI/" rel="tag"><i class="fa fa-tag"></i> AI</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/22/新的开始/" rel="next" title="新的开始">
+                <i class="fa fa-chevron-left"></i> 新的开始
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/28/as3对象池使用/" rel="prev" title="as3对象池使用">
+                as3对象池使用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -363,6 +501,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -383,8 +530,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -483,6 +639,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#格子类型游戏"><span class="nav-number">2.</span> <span class="nav-text">格子类型游戏</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">2.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建地图-格子-结构"><span class="nav-number">2.2.</span> <span class="nav-text">创建地图(格子)结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#判断临近格子是否可以移动"><span class="nav-number">2.3.</span> <span class="nav-text">判断临近格子是否可以移动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#移动方向选择-下个格子选取"><span class="nav-number">2.4.</span> <span class="nav-text">移动方向选择(下个格子选取)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#完全随机选择"><span class="nav-number">2.4.1.</span> <span class="nav-text">完全随机选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最近移动的方向优先选择"><span class="nav-number">2.4.2.</span> <span class="nav-text">最近移动的方向优先选择</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -638,6 +810,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
