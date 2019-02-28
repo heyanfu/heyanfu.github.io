@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="对象池,">
 
 
 
@@ -88,13 +88,23 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="My Blog">
-<meta property="og:url" content="https://heyanfu.github.io/archives/2018/09/index.html">
+<meta name="description" content="前言在编写代码时，经常要注意的一件事情是代码的优化，一般在代码中，实例化对象是相对来说比较耗时、消耗性能的操作了，优化该操作的常用方法之一是使用对象池技术，本次以ActionScript3为例，分析一波对象池技术的使用。 new对象耗时分析对基本的MovieClip进行实例化10000次所耗时间如下所示：  经过多次测试，该操作耗时约为40~50ms，这个时间感觉还可以接受的样子，下面再进行100">
+<meta name="keywords" content="对象池">
+<meta property="og:type" content="article">
+<meta property="og:title" content="as3对象池使用">
+<meta property="og:url" content="https://heyanfu.github.io/2019/02/28/as3对象池使用/index.html">
 <meta property="og:site_name" content="My Blog">
+<meta property="og:description" content="前言在编写代码时，经常要注意的一件事情是代码的优化，一般在代码中，实例化对象是相对来说比较耗时、消耗性能的操作了，优化该操作的常用方法之一是使用对象池技术，本次以ActionScript3为例，分析一波对象池技术的使用。 new对象耗时分析对基本的MovieClip进行实例化10000次所耗时间如下所示：  经过多次测试，该操作耗时约为40~50ms，这个时间感觉还可以接受的样子，下面再进行100">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://heyanfu.github.io/2019/02/28/as3对象池使用/new1wobj.png">
+<meta property="og:image" content="https://heyanfu.github.io/2019/02/28/as3对象池使用/addmuti.png">
+<meta property="og:image" content="https://heyanfu.github.io/2019/02/28/as3对象池使用/pool1w.png">
+<meta property="og:image" content="https://heyanfu.github.io/2019/02/28/as3对象池使用/pool10w.png">
+<meta property="og:updated_time" content="2019-02-28T16:02:38.035Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="My Blog">
+<meta name="twitter:title" content="as3对象池使用">
+<meta name="twitter:description" content="前言在编写代码时，经常要注意的一件事情是代码的优化，一般在代码中，实例化对象是相对来说比较耗时、消耗性能的操作了，优化该操作的常用方法之一是使用对象池技术，本次以ActionScript3为例，分析一波对象池技术的使用。 new对象耗时分析对基本的MovieClip进行实例化10000次所耗时间如下所示：  经过多次测试，该操作耗时约为40~50ms，这个时间感觉还可以接受的样子，下面再进行100">
+<meta name="twitter:image" content="https://heyanfu.github.io/2019/02/28/as3对象池使用/new1wobj.png">
 
 
 
@@ -124,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="https://heyanfu.github.io/archives/2018/09/">
+  <link rel="canonical" href="https://heyanfu.github.io/2019/02/28/as3对象池使用/">
 
 
 
 
 
-  <title>Archive | My Blog</title>
+  <title>as3对象池使用 | My Blog</title>
   
 
 
@@ -149,7 +159,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <a href="https://github.com/heyanfu" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
@@ -290,72 +300,207 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        Um..! 8 posts in total. Keep on posting.
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://heyanfu.github.io/2019/02/28/as3对象池使用/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="遗忘的记忆">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/a.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/09/22/新的开始/" itemprop="url">
-              
-                <span itemprop="name">新的开始</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">as3对象池使用</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-09-22T16:59:31+08:00" content="2018-09-22">
-          09-22
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-28T23:53:47+08:00">
+                2019-02-28
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/ActionScript3/" itemprop="url" rel="index">
+                    <span itemprop="name">ActionScript3</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/02/28/as3对象池使用/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/02/28/as3对象池使用/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在编写代码时，经常要注意的一件事情是代码的优化，一般在代码中，实例化对象是相对来说比较耗时、消耗性能的操作了，优化该操作的常用方法之一是使用对象池技术，本次以ActionScript3为例，分析一波对象池技术的使用。</p>
+<h1 id="new对象耗时分析"><a href="#new对象耗时分析" class="headerlink" title="new对象耗时分析"></a>new对象耗时分析</h1><p>对基本的MovieClip进行实例化10000次所耗时间如下所示：</p>
+<p><img src="/2019/02/28/as3对象池使用/new1wobj.png" alt="实例化对象图" title="实例化对象图"></p>
+<p>经过多次测试，该操作耗时约为40~50ms，这个时间感觉还可以接受的样子，下面再进行10000次加法与乘法操作来进行对比一下。 </p>
+<p><img src="/2019/02/28/as3对象池使用/addmuti.png" alt="加法乘法操作图" title="加法乘法操作图"></p>
+<p>经过多次测试，该操作耗时约为2~3ms，大约为new MovieClip操作的1/20 ~ 1/15，这里需要注意的是new的是一个普通的MovieClip，因此没有涉及到过多的其它操作，在实际开发中，一般是new自己写好封装的类，在new的过程中会做一些初始化操作，因此会更加耗时。</p>
+<h1 id="对象池类的编写"><a href="#对象池类的编写" class="headerlink" title="对象池类的编写"></a>对象池类的编写</h1><p>主要是把实例化好的对象存入池中，在需要使用的时候直接从池中取出对象，不再去new新的对象。对象用完之后再将其放入池中，以便下一次的使用。代码如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">package Demo</span><br><span class="line">&#123;</span><br><span class="line">	import flash.display.MovieClip;</span><br><span class="line">	import flash.display.Sprite;</span><br><span class="line"></span><br><span class="line">	public class TestPool extends Sprite &#123;</span><br><span class="line">		private static var objs:Array;</span><br><span class="line">		private static var count:int;</span><br><span class="line">		private static var size:int;</span><br><span class="line"></span><br><span class="line">		// 初始化池大小</span><br><span class="line">		public static function initPool(maxSize:int):void &#123;</span><br><span class="line">			size = maxSize;</span><br><span class="line">			count = maxSize;</span><br><span class="line">			objs = [];</span><br><span class="line">			for (var i:int = 0; i &lt; maxSize; i ++) &#123;</span><br><span class="line">				objs.push(new MovieClip());</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		// 从池中取一个对象</span><br><span class="line">		public static function getObject():MovieClip &#123;</span><br><span class="line">			if (count &gt; 0) &#123;</span><br><span class="line">				count --;</span><br><span class="line">				return objs[count];</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			// 当池中没有对象时,往池中创建size大小的对象</span><br><span class="line">			for (var i:int = 0; i &lt; size; i ++) &#123;</span><br><span class="line">				objs.unshift(new MovieClip());</span><br><span class="line">			&#125;</span><br><span class="line">			count = size;</span><br><span class="line"></span><br><span class="line">			return getObject();</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		// 对象用完之后,继续放入池中,以便下次使用</span><br><span class="line">		public static function dispose(mc:MovieClip):void &#123;</span><br><span class="line">			objs[count] = mc;</span><br><span class="line">			count ++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="对象池耗时测试"><a href="#对象池耗时测试" class="headerlink" title="对象池耗时测试"></a>对象池耗时测试</h1><p>从池中取对象好像如下所示：</p>
+<p><img src="/2019/02/28/as3对象池使用/pool1w.png" alt="对象池耗时测试图" title="对象池耗时测试图"></p>
+<p>可以看出，对于10000次操作，初始化池所耗时间约为40~50ms，之后从池中取10000个对象所需时间约为4~6ms，提高了约10倍左右。</p>
+<p>再对100000次操作进行测试如下：</p>
+<p><img src="/2019/02/28/as3对象池使用/pool10w.png" alt="对象池耗时测试图" title="对象池耗时测试图"></p>
+<p>可以看出，初始化池所耗时间约为550~600ms，而取操作只用了约30ms，可见对象池对于性能得提升还是非常有帮助的。在需要实例化多个相同对象的时候，尽量使用对象池技术来提高性能。</p>
+
+      
     </div>
+    
+    
+    
+    
+    
+
+    
+
+    
+
+    <div>
+      
+        ﻿<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/对象池/" rel="tag"><i class="fa fa-tag"></i> 对象池</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/22/新的开始/" rel="next" title="新的开始">
+                <i class="fa fa-chevron-left"></i> 新的开始
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/23/敌人移动AI初探/" rel="prev" title="敌人移动AI初探">
+                敌人移动AI初探 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -363,6 +508,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -383,8 +537,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -483,6 +646,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#new对象耗时分析"><span class="nav-number">2.</span> <span class="nav-text">new对象耗时分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对象池类的编写"><span class="nav-number">3.</span> <span class="nav-text">对象池类的编写</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对象池耗时测试"><span class="nav-number">4.</span> <span class="nav-text">对象池耗时测试</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -638,6 +817,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
