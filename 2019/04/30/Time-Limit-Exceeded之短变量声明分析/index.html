@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="细节,">
 
 
 
@@ -88,14 +88,20 @@
 
 
 
+<meta name="description" content="前言今天在逛LeetCode的时候，看到了这样一道题目:  The Fibonacci numbers, commonly denoted F(n) form a sequence, called the Fibonacci sequence, such that each number is the sum of the two preceding ones, starting from 0 a">
+<meta name="keywords" content="细节">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Time Limit Exceeded-对:=的分析">
-<meta property="og:url" content="https://heyanfu.github.io/2019/04/30/Time-Limit-Exceeded-对-的分析/index.html">
+<meta property="og:title" content="Time Limit Exceeded之短变量声明分析">
+<meta property="og:url" content="https://heyanfu.github.io/2019/04/30/Time-Limit-Exceeded之短变量声明分析/index.html">
 <meta property="og:site_name" content="My Blog">
+<meta property="og:description" content="前言今天在逛LeetCode的时候，看到了这样一道题目:  The Fibonacci numbers, commonly denoted F(n) form a sequence, called the Fibonacci sequence, such that each number is the sum of the two preceding ones, starting from 0 a">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-30T15:19:24.203Z">
+<meta property="og:image" content="https://heyanfu.github.io/2019/04/30/Time-Limit-Exceeded之短变量声明分析/goland_debug0.png">
+<meta property="og:updated_time" content="2019-04-30T15:59:27.698Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Time Limit Exceeded-对:=的分析">
+<meta name="twitter:title" content="Time Limit Exceeded之短变量声明分析">
+<meta name="twitter:description" content="前言今天在逛LeetCode的时候，看到了这样一道题目:  The Fibonacci numbers, commonly denoted F(n) form a sequence, called the Fibonacci sequence, such that each number is the sum of the two preceding ones, starting from 0 a">
+<meta name="twitter:image" content="https://heyanfu.github.io/2019/04/30/Time-Limit-Exceeded之短变量声明分析/goland_debug0.png">
 
 
 
@@ -125,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="https://heyanfu.github.io/2019/04/30/Time-Limit-Exceeded-对-的分析/">
+  <link rel="canonical" href="https://heyanfu.github.io/2019/04/30/Time-Limit-Exceeded之短变量声明分析/">
 
 
 
 
 
-  <title>Time Limit Exceeded-对:=的分析 | My Blog</title>
+  <title>Time Limit Exceeded之短变量声明分析 | My Blog</title>
   
 
 
@@ -305,7 +311,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://heyanfu.github.io/2019/04/30/Time-Limit-Exceeded-对-的分析/">
+    <link itemprop="mainEntityOfPage" href="https://heyanfu.github.io/2019/04/30/Time-Limit-Exceeded之短变量声明分析/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="遗忘的记忆">
@@ -322,7 +328,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Time Limit Exceeded-对:=的分析</h1>
+          <h1 class="post-title" itemprop="name headline">Time Limit Exceeded之短变量声明分析</h1>
         
 
         <div class="post-meta">
@@ -334,7 +340,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-30T23:19:24+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-30T23:24:10+08:00">
                 2019-04-30
               </time>
             
@@ -345,6 +351,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Go/" itemprop="url" rel="index">
+                    <span itemprop="name">Go</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -354,8 +382,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2019/04/30/Time-Limit-Exceeded-对-的分析/#SOHUCS" itemprop="discussionUrl">
-                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/04/30/Time-Limit-Exceeded-对-的分析/" itemprop="commentsCount"></span>
+                <a href="/2019/04/30/Time-Limit-Exceeded之短变量声明分析/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/04/30/Time-Limit-Exceeded之短变量声明分析/" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -383,7 +411,24 @@
       
 
       
-        
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>今天在逛<a href="https://leetcode.com/problems/fibonacci-number/" target="_blank" rel="noopener">LeetCode</a>的时候，看到了这样一道题目:</p>
+<blockquote>
+<p>The Fibonacci numbers, commonly denoted F(n) form a sequence, called the Fibonacci sequence, such that each number is the sum of the two preceding ones, starting from 0 and 1. That is,</p>
+</blockquote>
+<blockquote>
+<p>F(0) = 0,   F(1) = 1<br>F(N) = F(N - 1) + F(N - 2), for N &gt; 1.</p>
+</blockquote>
+<p>题目意思很简单，就是求<a href="https://baike.baidu.com/item/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/99145?fr=aladdin" target="_blank" rel="noopener">斐波那契数列</a>,于是很容易用递归写出如下代码:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fib</span><span class="params">(N <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> N &lt;= <span class="number">1</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> N</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> fib(N - <span class="number">1</span>) + fib(N - <span class="number">2</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行正常AC，但想到用递归做的事情，一般都可以用栈来实现，因为递归也可以理解成不断入栈、出栈。<br>于是很快用栈写出了如下代码:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fib</span><span class="params">(N <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    res := <span class="number">0</span></span><br><span class="line">    stack := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">if</span> N &lt;= <span class="number">1</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> N</span><br><span class="line">    &#125;</span><br><span class="line">    stack = <span class="built_in">append</span>(stack, N - <span class="number">1</span>)</span><br><span class="line">    stack = <span class="built_in">append</span>(stack, N - <span class="number">2</span>)</span><br><span class="line">    fmt.Println(stack)</span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">len</span>(stack) &gt; <span class="number">0</span> &#123;</span><br><span class="line">        val, stack := stack[<span class="number">0</span>], stack[<span class="number">1</span>:]</span><br><span class="line">        <span class="keyword">if</span> val &lt;= <span class="number">1</span> &#123;</span><br><span class="line">            res += val</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            stack = <span class="built_in">append</span>(stack, val - <span class="number">1</span>)</span><br><span class="line">            stack = <span class="built_in">append</span>(stack, val - <span class="number">2</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行提示Time Limit Exceeded，时间超限一般来说估计是死循环了。当我观察代码时，发现也只有一个用来判断栈是否为空的for循环，该for循环中不断对stack进行push，pop操作，感觉也不会死循环。于是我用GoLand在如下位置打上了断点:</p>
+<p><img src="/2019/04/30/Time-Limit-Exceeded之短变量声明分析/goland_debug0.png" alt="GoLandDebug图" title="GoLandDebug图"></p>
+<p>上图很明显看出堆栈中有两个stack。 <code>val, stack := stack[0], stack[1:]</code> 声明了一个作用域为for循环内部的stack，而for循环判断条件中的stack是函数fib作用域中的stack，该stack在for循环中一直没被修改，因此出现了死循环。</p>
+<p>而我一开始以为 <code>val, stack := stack[0], stack[1:]</code> 只会新声明一个val，stack会使用外部的stack，因为:=左边只要有一个变量是未被声明的就可以使用它。于是对代码进行了修改，val单独一行声明赋值，代码如下:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fib</span><span class="params">(N <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    res := <span class="number">0</span></span><br><span class="line">    stack := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">if</span> N &lt;= <span class="number">1</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> N</span><br><span class="line">    &#125;</span><br><span class="line">    stack = <span class="built_in">append</span>(stack, N - <span class="number">1</span>)</span><br><span class="line">    stack = <span class="built_in">append</span>(stack, N - <span class="number">2</span>)</span><br><span class="line">    fmt.Println(stack)</span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">len</span>(stack) &gt; <span class="number">0</span> &#123;</span><br><span class="line">        val := stack[<span class="number">0</span>]</span><br><span class="line">        stack = stack[<span class="number">1</span>:]</span><br><span class="line">        <span class="keyword">if</span> val &lt;= <span class="number">1</span> &#123;</span><br><span class="line">            res += val</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            stack = <span class="built_in">append</span>(stack, val - <span class="number">1</span>)</span><br><span class="line">            stack = <span class="built_in">append</span>(stack, val - <span class="number">2</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>提交，正常AC。</p>
+
       
     </div>
     
@@ -407,6 +452,12 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/细节/" rel="tag"><i class="fa fa-tag"></i> 细节</a>
+          
+        </div>
       
 
       
@@ -482,8 +533,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -511,7 +571,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -522,7 +582,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -582,6 +642,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
